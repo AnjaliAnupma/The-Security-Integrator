@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search in Page Content</title>
+  <style>
+    #search-box {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<input type="text" id="search-box" placeholder="Search">
+<div id="content">
+  <p>This is some example content. You can search for specific words here.</p>
+  <p>Another paragraph with additional text for demonstration purposes.</p>
+</div>
+
+<script>
+  // Function to perform search
+  function searchInContent() {
+    // Get input value and convert to lowercase for case-insensitive search
+    var searchInput = document.getElementById('search-box').value.toLowerCase();
+
+    // Get the content container
+    var contentContainer = document.getElementById('content');
+
+    // Get all paragraphs in the content
+    var paragraphs = contentContainer.getElementsByTagName('p');
+
+    // Loop through paragraphs and show/hide based on search input
+    for (var i = 0; i < paragraphs.length; i++) {
+      var paragraphText = paragraphs[i].innerText.toLowerCase();
+      if (paragraphText.includes(searchInput)) {
+        paragraphs[i].style.display = 'block';
+      } else {
+        paragraphs[i].style.display = 'none';
+      }
+    }
+  }
+
+  // Add event listener to the search input
+  document.getElementById('search-box').addEventListener('input', searchInContent);
+</script>
+
+</body>
+</html>
